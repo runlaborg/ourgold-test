@@ -9,6 +9,10 @@ use App\Models\Room;
 
 class HistoryController extends Controller
 {
+    /*
+     * get - выводим общую историю "перемещения" мебели по квартире
+     * post - выводим историю на определённую дату/время по квартире
+     * */
     public function showApartmentHistory($id, HistoryRequest $request)
     {
         $apartment = Apartment::findOrFail($id);
@@ -28,6 +32,10 @@ class HistoryController extends Controller
         return response(History::whereIn('room_id', $apartment->rooms->pluck('id'))->get());
     }
 
+    /*
+     * get - выводим общую историю "перемещения" мебели по комнате
+     * post - выводим историю на определённую дату/время по комнате
+     * */
     public function  showRoomHistory($id, HistoryRequest $request)
     {
         $room = Room::findOrFail($id);

@@ -10,12 +10,17 @@ use  App\Models\Furniture;
 
 class FurnitureController extends Controller
 {
+    /*
+     * Выводим все элементы мебели для всех комнат квартиры
+     * */
     public function index(Apartment $apartment, Room $room)
     {
         $furniture = $room->furniture()->get();
         return response($furniture);
     }
-
+    /*
+     * Выводим все эелементы мебели отдельной комнаты в квартире
+     * */
     public function show(Apartment $apartment, Room $room, Furniture $furniture)
     {
         return response($furniture);

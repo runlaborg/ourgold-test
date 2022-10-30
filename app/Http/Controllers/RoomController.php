@@ -9,12 +9,17 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
+    /*
+     * Выводим комнаты для квартиры
+     * */
     public function index(Apartment $apartment)
     {
         $rooms = $apartment->rooms;
         return response($rooms);
     }
-
+    /*
+     * Выводим отдельную комнату квартиры
+     * */
     public function show(Apartment $apartment, Room $room)
     {
         return response($room);

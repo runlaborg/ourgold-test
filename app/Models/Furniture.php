@@ -33,7 +33,9 @@ class Furniture extends BaseModel
     protected static function boot()
     {
         parent::boot();
-
+        /*
+         * Добавляем записи в History при создании, обновлении, удалении и восстановлении мебели
+         * */
         static::created(function(Furniture $furniture) {
             History::create([
                 'furniture_id' => $furniture->id,
